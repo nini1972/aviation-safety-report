@@ -1,0 +1,1865 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Commercial Aviation Safety: A Decade of Challenges and Solutions (2015-2025)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #8b5a2b;
+            --accent: #d4af37;
+            --muted: #6b7280;
+            --background: #fafafa;
+            --surface: #ffffff;
+        }
+        
+        .font-serif { font-family: 'Tiempos Headline', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .text-accent { color: var(--accent); }
+        .text-muted { color: var(--muted); }
+        .bg-surface { background-color: var(--surface); }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(139, 90, 43, 0.6) 100%);
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: auto auto;
+            }
+            .bento-main {
+                grid-row: 1 / 3;
+            }
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid #e5e7eb;
+            z-index: 50;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--muted);
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            margin-left: -1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--secondary);
+            border-left-color: var(--secondary);
+        }
+        
+        .toc-link.sub {
+            font-size: 0.875rem;
+            margin-left: 1rem;
+            padding-left: 0.5rem;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--secondary), transparent);
+            margin: 4rem 0;
+        }
+        
+        .citation {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .citation:hover {
+            text-decoration: underline;
+        }
+        
+        .pull-quote {
+            border-left: 4px solid var(--accent);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.125rem;
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        .aircraft-card {
+            background: var(--surface);
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: var(--accent);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        /* Mermaid diagram styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: var(--surface);
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Enhanced contrast for mermaid elements */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            stroke: var(--primary) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node .label {
+            color: var(--primary) !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: var(--secondary) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .arrowheadPath {
+            fill: var(--secondary) !important;
+        }
+        
+        /* Timeline specific styling */
+        .mermaid .section0, .mermaid .section1, .mermaid .section2 {
+            fill: var(--surface) !important;
+            stroke: var(--secondary) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .cScale0, .mermaid .cScale1, .mermaid .cScale2 {
+            fill: var(--accent) !important;
+        }
+        
+        .mermaid .taskText0, .mermaid .taskText1, .mermaid .taskText2 {
+            fill: var(--primary) !important;
+            font-weight: 500 !important;
+        }
+        
+        /* Ensure text readability on all backgrounds */
+        .mermaid text {
+            font-family: 'Inter', sans-serif !important;
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.8) !important;
+        }
+    </style>
+  </head>
+
+  <body class="bg-surface font-sans text-primary">
+    <!-- Table of Contents -->
+    <nav class="toc-fixed" id="toc">
+      <div class="mb-8">
+        <h3 class="font-serif text-lg font-bold text-primary mb-4">Contents</h3>
+        <a href="#hero" class="toc-link">Overview</a>
+        <a href="#executive-summary" class="toc-link">Executive Summary</a>
+        <a href="#major-incidents" class="toc-link">Major Incidents</a>
+        <a href="#major-incidents" class="toc-link sub">Air India Flight 171</a>
+        <a href="#major-incidents" class="toc-link sub">Jeju Air Flight 2216</a>
+        <a href="#major-incidents" class="toc-link sub">China Eastern Flight 5735</a>
+        <a href="#major-incidents" class="toc-link sub">PSA Airlines Flight 294</a>
+        <a href="#technical-analysis" class="toc-link">Technical Analysis</a>
+        <a href="#technical-analysis" class="toc-link sub">MCAS System Fixes</a>
+        <a href="#technical-analysis" class="toc-link sub">Fuel System Anomalies</a>
+        <a href="#technical-analysis" class="toc-link sub">Safety Technologies</a>
+        <a href="#operational-perspectives" class="toc-link">Operational Perspectives</a>
+        <a href="#operational-perspectives" class="toc-link sub">Pilot Training</a>
+        <a href="#operational-perspectives" class="toc-link sub">Human Factors</a>
+        <a href="#operational-perspectives" class="toc-link sub">Mental Health</a>
+        <a href="#safety-solutions" class="toc-link">Safety Solutions</a>
+        <a href="#future-outlook" class="toc-link">Future Outlook</a>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="lg:hidden fixed top-4 left-4 z-60 bg-surface p-2 rounded-lg shadow-lg" onclick="toggleTOC()">
+      <i class="fas fa-bars text-secondary"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section id="hero" class="relative min-h-screen">
+        <div class="bento-grid h-screen">
+          <!-- Main Hero Content -->
+          <div class="bento-main relative">
+            <img src="https://kimi-web-img.moonshot.cn/img/static.vecteezy.com/e72f9ad3f0ab856bec6483104b33f9e401798b9f.jpg" alt="Commercial airliner flying during sunset" class="w-full h-full object-cover" size="wallpaper" aspect="wide" color="orange" style="photo" query="commercial airplane sunset" referrerpolicy="no-referrer" data-modified="1" data-score="11599.00"/>
+            <div class="hero-overlay absolute inset-0 flex items-center justify-center">
+              <div class="text-center text-white max-w-4xl px-8">
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 italic leading-tight">
+                  Commercial Aviation Safety
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl font-light mb-8 opacity-90">
+                  A Decade of Challenges and Solutions
+                </p>
+                <div class="text-lg opacity-75">
+                  <p>Comprehensive Analysis of Major Plane Crashes</p>
+                  <p class="text-accent font-semibold">2015-2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Elements -->
+          <div class="space-y-4 p-4 md:p-8">
+            <div class="bg-surface rounded-lg p-6 shadow-lg">
+              <h3 class="font-serif text-xl font-bold text-secondary mb-4">Key Statistics</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between">
+                  <span class="text-muted">Total Fatalities (2015-2025)</span>
+                  <span class="font-bold text-primary">2,100+</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-muted">Major Incidents</span>
+                  <span class="font-bold text-primary">12</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-muted">Safety Rate Improvement</span>
+                  <span class="font-bold text-accent">45%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-lg p-6 shadow-lg">
+              <h3 class="font-serif text-xl font-bold text-secondary mb-4">Focus Areas</h3>
+              <div class="space-y-2">
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-cog text-secondary"></i>
+                  <span class="text-sm">Technical Systems</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-user-graduate text-secondary"></i>
+                  <span class="text-sm">Pilot Training</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-brain text-secondary"></i>
+                  <span class="text-sm">Human Factors</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-shield-alt text-secondary"></i>
+                  <span class="text-sm">Regulatory Oversight</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="py-16 px-8 max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h2 class="font-serif text-4xl font-bold text-primary mb-6">Executive Summary</h2>
+          <div class="w-24 h-1 bg-accent mb-8"></div>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <p class="text-xl leading-relaxed mb-8 text-muted">
+            The period between 2015 and 2025 has been a decade of profound learning for commercial aviation safety. While commercial aviation remains one of the safest modes of transportation, several catastrophic accidents have prompted critical reviews of safety systems, operational procedures, and regulatory oversight.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-8 my-12">
+            <div class="bg-surface border-l-4 border-secondary p-6 rounded-r-lg shadow-sm">
+              <h3 class="font-serif text-xl font-bold text-secondary mb-3">Technical Challenges</h3>
+              <p class="text-muted">The Boeing 737 MAX crashes revealed critical flaws in automated flight control systems, particularly the MCAS system and its reliance on single sensor inputs.</p>
+            </div>
+            <div class="bg-surface border-l-4 border-accent p-6 rounded-r-lg shadow-sm">
+              <h3 class="font-serif text-xl font-bold text-accent mb-3">Human Factors</h3>
+              <p class="text-muted">Incidents like Germanwings Flight 9525 highlighted the critical importance of pilot mental health screening and crew resource management.</p>
+            </div>
+            <div class="bg-surface border-l-4 border-primary p-6 rounded-r-lg shadow-sm">
+              <h3 class="font-serif text-xl font-bold text-primary mb-3">External Threats</h3>
+              <p class="text-muted">Shootdowns, mid-air collisions, and bird strikes continue to pose significant risks, requiring enhanced detection and prevention systems.</p>
+            </div>
+          </div>
+
+          <div class="pull-quote">
+            &#34;The aviation industry&#39;s commitment to learning from tragedies and implementing continuous improvements has made commercial flight safer than ever before, yet new challenges continue to emerge.&#34;
+          </div>
+
+          <p>
+            Despite these challenges, the industry has demonstrated remarkable resilience and adaptability. The implementation of enhanced pilot training programs, improved aircraft systems, and strengthened regulatory oversight has contributed to an overall improvement in safety rates. However, the recent spike in fatalities in 2025, including the Air India Flight 171 tragedy, serves as a stark reminder that vigilance must remain constant.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Major Incidents -->
+      <section id="major-incidents" class="py-16 px-8 max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h2 class="font-serif text-4xl font-bold text-primary mb-6">Major Incidents (2015-2025)</h2>
+          <div class="w-24 h-1 bg-accent mb-8"></div>
+          <p class="text-xl text-muted mb-12">
+            This section examines the most significant commercial aviation accidents of the past decade, analyzing their causes, impacts, and the lessons learned that have shaped modern aviation safety.
+          </p>
+        </div>
+
+        <!-- Air India Flight 171 -->
+        <div class="aircraft-card">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="font-serif text-2xl font-bold text-primary mb-2">Air India Flight 171</h3>
+              <p class="text-muted">June 12, 2025 • Boeing 787-8 Dreamliner</p>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-bold text-secondary">260</div>
+              <div class="text-sm text-muted">Total Fatalities</div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-6">
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/www.boeing.com/13c1a47c04f6a2517a613d942d13168554535a46.jpeg" alt="Boeing 787 Dreamliner aircraft" class="w-full h-48 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="Boeing 787 Dreamliner" referrerpolicy="no-referrer" data-modified="1" data-score="11599.00"/>
+              <h4 class="font-bold text-primary mb-3">Flight Details</h4>
+              <ul class="space-y-2 text-muted">
+                <li><strong>Route:</strong> Ahmedabad to London Gatwick</li>
+                <li><strong>Aircraft:</strong> Boeing 787-8 (VT-ANB)</li>
+                <li><strong>Passengers:</strong> 230 + 12 crew</li>
+                <li><strong>Survivors:</strong> 1 passenger</li>
+                <li><strong>Ground Casualties:</strong> 19 fatalities, 67 injured</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-3">Preliminary Findings</h4>
+              <p class="text-muted mb-4">
+                The crash occurred approximately 30 seconds after takeoff when both engines lost power simultaneously. India&#39;s Aircraft Accident Investigation Bureau (AAIB) preliminary report revealed that the <strong>fuel control switches were moved from &#34;RUN&#34; to &#34;CUTOFF&#34; position</strong> without pilot command <a href="#ref-69" class="citation">[69]</a>.
+              </p>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h5 class="font-bold text-secondary mb-2">Critical Factors</h5>
+                <ul class="text-sm space-y-1">
+                  <li>• Uncommanded fuel cutoff switch activation</li>
+                  <li>• Both engines affected within one second</li>
+                  <li>• Switches designed with detent mechanism requiring deliberate action</li>
+                  <li>• Ram Air Turbine deployed automatically after engine failure</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-muted">
+            The investigation continues to determine whether the switch movement resulted from human error, mechanical malfunction, or electronic failure. This incident marked the first fatal accident involving a Boeing 787 Dreamliner since its introduction in 2011 <a href="#ref-71" class="citation">[71]</a>.
+          </p>
+        </div>
+
+        <!-- Jeju Air Flight 2216 -->
+        <div class="aircraft-card">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="font-serif text-2xl font-bold text-primary mb-2">Jeju Air Flight 2216</h3>
+              <p class="text-muted">December 29, 2024 • Boeing 737-800</p>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-bold text-secondary">179</div>
+              <div class="text-sm text-muted">Fatalities</div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <img src="https://kimi-web-img.moonshot.cn/img/i.ytimg.com/b0355ece7d57c4eb7a119b4883b89ceb25d85962.jpg" alt="Boeing 737-800 aircraft after bird strike incident" class="w-full h-64 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="Boeing 737-800 bird strike" referrerpolicy="no-referrer" data-modified="1" data-score="11595.00"/>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-bold text-primary mb-3">Incident Sequence</h4>
+              <div class="timeline-item">
+                <h5 class="font-bold">08:59 Local Time</h5>
+                <p class="text-muted">Crew reports bird strike and declares mayday during approach to Muan International Airport</p>
+              </div>
+              <div class="timeline-item">
+                <h5 class="font-bold">Go-around Initiated</h5>
+                <p class="text-muted">Flight data recorder and cockpit voice recorder ceased recording approximately 4 minutes before crash</p>
+              </div>
+              <div class="timeline-item">
+                <h5 class="font-bold">Belly Landing Attempt</h5>
+                <p class="text-muted">Aircraft landed with retracted landing gear, overran runway, and collided with navigation aid structure</p>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-3">Investigation Findings</h4>
+              <p class="text-muted mb-4">
+                Both engines showed evidence of bird strike, with DNA analysis identifying the birds as Baikal Teals, a migratory species common to the region <a href="#ref-227" class="citation">[227]</a>. The bird ingestion likely led to partial or complete engine failure, compromising thrust and potentially affecting hydraulic systems.
+              </p>
+              <div class="bg-red-50 border border-red-200 p-4 rounded-lg">
+                <h5 class="font-bold text-red-700 mb-2">Critical Safety Issues</h5>
+                <ul class="text-sm space-y-1 text-red-600">
+                  <li>• Black box data gap during final minutes</li>
+                  <li>• Hydraulic system failure affecting landing gear deployment</li>
+                  <li>• Limited decision-making time after bird strike</li>
+                  <li>• Deadliest civil air accident in South Korea since 1997</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- China Eastern Flight 5735 -->
+        <div class="aircraft-card">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="font-serif text-2xl font-bold text-primary mb-2">China Eastern Airlines Flight 5735</h3>
+              <p class="text-muted">March 21, 2022 • Boeing 737-89P</p>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-bold text-secondary">132</div>
+              <div class="text-sm text-muted">Fatalities</div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <p class="text-muted mb-4">
+              The aircraft crashed in a mountainous region of Guangxi, China, while en route from Kunming to Guangzhou. Surveillance footage indicated the aircraft entered a <strong>near-vertical dive</strong>, impacting the ground at high speed and steep angle <a href="#ref-117" class="citation">[117]</a>.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-bold text-primary mb-3">Flight Profile</h4>
+              <ul class="space-y-2 text-muted">
+                <li><strong>Altitude:</strong> 29,000 feet at time of incident</li>
+                <li><strong>Impact Location:</strong> Forested area near Teng County</li>
+                <li><strong>Distance from Destination:</strong> 120 nautical miles west of Guangzhou</li>
+                <li><strong>Investigation Status:</strong> Ongoing, no final report released</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-3">Controversy and Speculation</h4>
+              <p class="text-muted mb-4">
+                The Wall Street Journal reported in May 2022 that black box data indicated someone in the cockpit may have intentionally crashed the plane <a href="#ref-290" class="citation">[290]</a>. Chinese authorities have dismissed this speculation as misleading and interfering with the ongoing investigation.
+              </p>
+              <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
+                <h5 class="font-bold text-yellow-700 mb-2">Official Response</h5>
+                <p class="text-sm text-yellow-600">The Civil Aviation Administration of China has cited national security and social stability concerns for not releasing detailed findings, raising concerns within the international aviation community about transparency.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PSA Airlines Flight 294 -->
+        <div class="aircraft-card">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="font-serif text-2xl font-bold text-primary mb-2">PSA Airlines Flight 294</h3>
+              <p class="text-muted">January 29, 2025 • Canadair CRJ-700</p>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-bold text-secondary">67</div>
+              <div class="text-sm text-muted">Fatalities (both aircraft)</div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <img src="https://kimi-web-img.moonshot.cn/img/res.cloudinary.com/e58b88c1907537c4af551a924632a0343ff74c01.jpg" alt="Mid-air collision between commercial airliner and military helicopter" class="w-full h-64 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="midair collision commercial plane military helicopter" referrerpolicy="no-referrer" data-modified="1" data-score="11595.00"/>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-bold text-primary mb-3">Collision Details</h4>
+              <ul class="space-y-2 text-muted">
+                <li><strong>Location:</strong> Near Washington, D.C.</li>
+                <li><strong>Altitude:</strong> Approximately 325 feet</li>
+                <li><strong>Weather:</strong> Clear conditions</li>
+                <li><strong>Commercial Flight:</strong> 60 passengers + 4 crew</li>
+                <li><strong>Military Helicopter:</strong> UH-60 Black Hawk with 3 personnel</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-3">Critical Factors</h4>
+              <p class="text-muted mb-4">
+                The collision occurred at an altitude that notably exceeded the FAA&#39;s 200-foot limit for helicopters operating in that specific corridor. The National Transportation Safety Board investigation focused on potential discrepancies in flight routes, adherence to ATC instructions, and communication errors <a href="#ref-123" class="citation">[123]</a>.
+              </p>
+              <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                <h5 class="font-bold text-blue-700 mb-2">Airspace Management Issues</h5>
+                <p class="text-sm text-blue-600">This tragic event raised immediate questions about airspace management and traffic separation procedures in highly congested metropolitan areas, particularly concerning military-civilian flight integration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Notable Incidents -->
+        <div class="aircraft-card">
+          <h3 class="font-serif text-2xl font-bold text-primary mb-6">Other Notable Incidents</h3>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-bold text-secondary mb-4">Boeing 737 MAX Crashes</h4>
+              <div class="space-y-4">
+                <div class="border-l-4 border-red-400 pl-4">
+                  <h5 class="font-bold">Lion Air Flight 610 (Oct 2018)</h5>
+                  <p class="text-sm text-muted">189 fatalities • MCAS system malfunction due to faulty AOA sensor</p>
+                </div>
+                <div class="border-l-4 border-red-400 pl-4">
+                  <h5 class="font-bold">Ethiopian Airlines Flight 302 (Mar 2019)</h5>
+                  <p class="text-sm text-muted">157 fatalities • Similar MCAS-related issues, leading to worldwide grounding</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-secondary mb-4">Other Significant Events</h4>
+              <div class="space-y-4">
+                <div class="border-l-4 border-orange-400 pl-4">
+                  <h5 class="font-bold">Germanwings Flight 9525 (Mar 2015)</h5>
+                  <p class="text-sm text-muted">150 fatalities • Pilot suicide, highlighting mental health concerns</p>
+                </div>
+                <div class="border-l-4 border-orange-400 pl-4">
+                  <h5 class="font-bold">Ukraine International Flight 752 (Jan 2020)</h5>
+                  <p class="text-sm text-muted">176 fatalities • Shot down by Iranian military, geopolitical risks</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Technical Analysis -->
+      <section id="technical-analysis" class="py-16 px-8 max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h2 class="font-serif text-4xl font-bold text-primary mb-6">Technical Analysis and Engineering Solutions</h2>
+          <div class="w-24 h-1 bg-accent mb-8"></div>
+        </div>
+
+        <!-- MCAS System Analysis -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Boeing 737 MAX: MCAS System and Fixes</h3>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 class="font-bold text-primary mb-4">Original MCAS Design Flaws</h4>
+              <ul class="space-y-3 text-muted">
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-exclamation-triangle text-red-500 mt-1"></i>
+                  <span><strong>Single Sensor Dependency:</strong> Relied on input from only one Angle of Attack (AOA) sensor</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-exclamation-triangle text-red-500 mt-1"></i>
+                  <span><strong>Repetitive Activation:</strong> Could repeatedly activate with increasing force</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-exclamation-triangle text-red-500 mt-1"></i>
+                  <span><strong>Limited Pilot Information:</strong> Inadequate training and documentation about system behavior</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-4">Investigation Findings</h4>
+              <p class="text-muted mb-4">
+                Both crashes revealed that faulty AOA sensors provided incorrect data, triggering uncommanded MCAS activations that led to fatal nose-down pitch commands. The system&#39;s design made it difficult for pilots to counteract, especially without comprehensive training <a href="#ref-131" class="citation">[131]</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+            <h4 class="font-bold text-green-700 mb-4">Implemented Fixes (Post-Grounding)</h4>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-bold text-green-600 mb-2">System Enhancements</h5>
+                <ul class="text-sm space-y-1">
+                  <li>• MCAS now compares data from both AOA sensors</li>
+                  <li>• Limited to one activation per high AOA event</li>
+                  <li>• Pilot control column inputs can override MCAS commands</li>
+                  <li>• AOA DISAGREE alert made standard on all aircraft</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-bold text-green-600 mb-2">Training Requirements</h5>
+                <ul class="text-sm space-y-1">
+                  <li>• Mandatory simulator training for 737 MAX pilots</li>
+                  <li>• Specific MCAS malfunction recovery procedures</li>
+                  <li>• Enhanced computer-based training modules</li>
+                  <li>• Revised flight crew operating manuals</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Air India Fuel System Investigation -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Air India Flight 171: Fuel System Anomaly</h3>
+
+          <div class="bg-surface border border-gray-200 rounded-lg p-6 mb-6">
+            <h4 class="font-bold text-primary mb-4">Preliminary Technical Analysis</h4>
+            <p class="text-muted mb-4">
+              The AAIB preliminary report indicates that the immediate cause of the dual engine failure was the movement of fuel control switches from &#34;RUN&#34; to &#34;CUTOFF&#34; position shortly after takeoff. This action occurred within one second for each engine, starving the engines of fuel <a href="#ref-192" class="citation">[192]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-red-50 p-4 rounded-lg">
+                <h5 class="font-bold text-red-700 mb-2">Human Action</h5>
+                <p class="text-sm text-red-600">Cockpit voice recording captured pilot confusion about who moved the switches</p>
+              </div>
+              <div class="bg-yellow-50 p-4 rounded-lg">
+                <h5 class="font-bold text-yellow-700 mb-2">Mechanical Failure</h5>
+                <p class="text-sm text-yellow-600">Switch mechanism design includes detent requiring deliberate action</p>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h5 class="font-bold text-blue-700 mb-2">Electronic Malfunction</h5>
+                <p class="text-sm text-blue-600">Electrical connections and control logic under investigation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Safety Technologies -->
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Advanced Safety Technologies</h3>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-bold text-primary mb-4">Current Systems</h4>
+              <div class="space-y-4">
+                <div class="border-l-4 border-blue-400 pl-4">
+                  <h5 class="font-bold">Fly-by-Wire Technology</h5>
+                  <p class="text-sm text-muted">Flight envelope protection preventing Loss of Control In-flight (LOC-I) accidents</p>
+                </div>
+                <div class="border-l-4 border-green-400 pl-4">
+                  <h5 class="font-bold">EGPWS/TAWS</h5>
+                  <p class="text-sm text-muted">Enhanced Ground Proximity Warning System providing terrain collision alerts</p>
+                </div>
+                <div class="border-l-4 border-purple-400 pl-4">
+                  <h5 class="font-bold">TCAS</h5>
+                  <p class="text-sm text-muted">Traffic Collision Avoidance System for mid-air collision prevention</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-4">Emerging Technologies</h4>
+              <div class="space-y-4">
+                <div class="border-l-4 border-orange-400 pl-4">
+                  <h5 class="font-bold">AI and Machine Learning</h5>
+                  <p class="text-sm text-muted">Predictive maintenance and decision support systems</p>
+                </div>
+                <div class="border-l-4 border-teal-400 pl-4">
+                  <h5 class="font-bold">Enhanced Vision Systems</h5>
+                  <p class="text-sm text-muted">Synthetic vision and enhanced vision for low-visibility operations</p>
+                </div>
+                <div class="border-l-4 border-indigo-400 pl-4">
+                  <h5 class="font-bold">LIDAR Turbulence Detection</h5>
+                  <p class="text-sm text-muted">Clear-air turbulence detection and avoidance systems</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Operational Perspectives -->
+      <section id="operational-perspectives" class="py-16 px-8 max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h2 class="font-serif text-4xl font-bold text-primary mb-6">Operational Perspectives and Human Factors</h2>
+          <div class="w-24 h-1 bg-accent mb-8"></div>
+        </div>
+
+        <!-- Pilot Training -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Pilot Training Enhancements</h3>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/placeholder-0620/%E5%9B%BE%E7%89%8717.png" alt="Commercial airline pilots training in flight simulator" class="w-full h-48 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="airline pilots in flight simulator" referrerpolicy="no-referrer" data-modified="1" data-score="10000.00"/>
+              <h4 class="font-bold text-primary mb-3">Training Evolution</h4>
+              <p class="text-muted mb-4">
+                Following accidents like Air France Flight 447, the industry has shifted toward Competency-Based Training and Assessment (CBTA), including Evidence-Based Training (EBT). This approach focuses on threat and error management during critical flight phases <a href="#ref-23" class="citation">[23]</a>.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-3">Key Training Components</h4>
+              <ul class="space-y-3 text-muted">
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-graduation-cap text-accent mt-1"></i>
+                  <span><strong>Manual Flying Skills:</strong> Upset recovery and unusual attitude training</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-graduation-cap text-accent mt-1"></i>
+                  <span><strong>Automation Management:</strong> Appropriate use of automation versus manual handling</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-graduation-cap text-accent mt-1"></i>
+                  <span><strong>Energy Management:</strong> State awareness and energy conservation techniques</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-graduation-cap text-accent mt-1"></i>
+                  <span><strong>CRM Enhancement:</strong> Crew resource management and monitoring interventions</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h4 class="font-bold text-blue-700 mb-3">737 MAX Specific Training</h4>
+            <p class="text-blue-600 mb-3">
+              Following the Lion Air and Ethiopian Airlines accidents, enhanced pilot training became a critical component of the 737 MAX return-to-service effort. The training specifically addresses MCAS system understanding and malfunction recovery procedures.
+            </p>
+            <p class="text-sm text-blue-500">
+              The Lion Air Flight 610 investigation revealed that pilots were not adequately informed or trained on how to quickly respond to MCAS malfunctions <a href="#ref-146" class="citation">[146]</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Human Factors and CRM -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Human Error and Crew Resource Management</h3>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 class="font-bold text-primary mb-4">Human Factors Statistics</h4>
+              <div class="space-y-4">
+                <div class="bg-surface border border-gray-200 rounded-lg p-4">
+                  <div class="text-3xl font-bold text-red-500 mb-2">68%</div>
+                  <p class="text-sm text-muted">of accidents (1990-2002) associated with aircrew or supervisory human error</p>
+                </div>
+                <div class="bg-surface border border-gray-200 rounded-lg p-4">
+                  <div class="text-3xl font-bold text-orange-500 mb-2">Majority</div>
+                  <p class="text-sm text-muted">of recent plane crashes and close calls involve pilot error <a href="#ref-386" class="citation">[386]</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-4">Common Error Factors</h4>
+              <ul class="space-y-2 text-muted">
+                <li>• Fatigue and high workload</li>
+                <li>• Cognitive overload</li>
+                <li>• Poor interpersonal communications</li>
+                <li>• Imperfect information processing</li>
+                <li>• Flawed decision-making under stress</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+            <h4 class="font-bold text-green-700 mb-4">Crew Resource Management (CRM) Solutions</h4>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div>
+                <h5 class="font-bold text-green-600 mb-2">Communication</h5>
+                <p class="text-sm text-green-600">Open communication and mutual support among crew members</p>
+              </div>
+              <div>
+                <h5 class="font-bold text-green-600 mb-2">Decision Making</h5>
+                <p class="text-sm text-green-600">Effective utilization of all available resources for safe operations</p>
+              </div>
+              <div>
+                <h5 class="font-bold text-green-600 mb-2">Threat Management</h5>
+                <p class="text-sm text-green-600">Framework for identifying and mitigating potential threats</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mental Health -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Pilot Mental Health and Wellbeing</h3>
+
+          <div class="bg-surface border border-gray-200 rounded-lg p-6 mb-6">
+            <h4 class="font-bold text-primary mb-4">Germanwings Flight 9525 Impact</h4>
+            <p class="text-muted mb-4">
+              The deliberate crash of Germanwings Flight 9525, where co-pilot Andreas Lubitz intentionally flew the aircraft into a mountain, brought pilot mental health to the forefront of aviation safety. Investigations revealed Lubitz had a history of depression and suicidal tendencies that he concealed from his employer <a href="#ref-227" class="citation">[227]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-bold text-secondary mb-3">Regulatory Response</h5>
+                <ul class="space-y-2 text-sm text-muted">
+                  <li>• Enhanced mental health screening protocols</li>
+                  <li>• Destigmatization of mental health issues</li>
+                  <li>• Support systems for pilots seeking help</li>
+                  <li>• Independent psychiatric evaluations</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-bold text-secondary mb-3">Policy Changes</h5>
+                <ul class="space-y-2 text-sm text-muted">
+                  <li>• &#34;Rule of two&#34; cockpit occupancy requirements</li>
+                  <li>• Medical assessment protocol updates</li>
+                  <li>• Confidential treatment options</li>
+                  <li>• Return-to-duty evaluations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pull-quote">
+            &#34;The focus has shifted toward ensuring pilots receive appropriate treatment and support, balancing safety needs with recognition that mental health conditions are treatable and individuals can recover to perform safety-critical roles effectively.&#34;
+          </div>
+        </div>
+
+        <!-- ATC Modernization -->
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Air Traffic Control Modernization</h3>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 class="font-bold text-primary mb-4">Current Challenges</h4>
+              <ul class="space-y-3 text-muted">
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-clock text-red-500 mt-1"></i>
+                  <span><strong>Aging Infrastructure:</strong> Outdated radar-based systems showing their age</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-users text-red-500 mt-1"></i>
+                  <span><strong>Staffing Shortages:</strong> Controller fatigue and workload concerns</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-plane text-red-500 mt-1"></i>
+                  <span><strong>Increasing Traffic:</strong> Higher demand straining current systems</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-4">Modernization Efforts</h4>
+              <ul class="space-y-3 text-muted">
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-satellite text-green-500 mt-1"></i>
+                  <span><strong>NextGen Program:</strong> GPS-based navigation and tracking</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-broadcast-tower text-green-500 mt-1"></i>
+                  <span><strong>ADS-B Technology:</strong> Automatic Dependent Surveillance-Broadcast</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-route text-green-500 mt-1"></i>
+                  <span><strong>Performance-Based Navigation:</strong> Precise and flexible flight paths</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h4 class="font-bold text-blue-700 mb-3">U.S. ATC Overhaul Plan (2025)</h4>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-bold text-blue-600 mb-2">Infrastructure Investment</h5>
+                <ul class="text-sm space-y-1 text-blue-600">
+                  <li>• $12.5 billion estimated cost</li>
+                  <li>• 6 new ATC centers</li>
+                  <li>• 4,600+ sites technology upgrades</li>
+                  <li>• 600 aging radar systems replacement</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-bold text-blue-600 mb-2">Timeline</h5>
+                <ul class="text-sm space-y-1 text-blue-600">
+                  <li>• Target completion: 2028</li>
+                  <li>• Standardized hardware/software</li>
+                  <li>• Runway safety system expansion</li>
+                  <li>• Continuous operations during transition</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Safety Solutions -->
+      <section id="safety-solutions" class="py-16 px-8 max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h2 class="font-serif text-4xl font-bold text-primary mb-6">Proposed and Implemented Safety Solutions</h2>
+          <div class="w-24 h-1 bg-accent mb-8"></div>
+        </div>
+
+        <!-- Investigation Process -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Post-Accident Investigations</h3>
+
+          <div class="bg-surface border border-gray-200 rounded-lg p-6 mb-8">
+            <h4 class="font-bold text-primary mb-4">Investigation Authority Examples</h4>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="text-center">
+                <i class="fas fa-search text-3xl text-accent mb-3"></i>
+                <h5 class="font-bold">NTSB (USA)</h5>
+                <p class="text-sm text-muted">National Transportation Safety Board</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-search text-3xl text-accent mb-3"></i>
+                <h5 class="font-bold">AAIB (India)</h5>
+                <p class="text-sm text-muted">Aircraft Accident Investigation Bureau</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-search text-3xl text-accent mb-3"></i>
+                <h5 class="font-bold">BEA (France)</h5>
+                <p class="text-sm text-muted">Bureau of Enquiry and Analysis</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-bold text-primary mb-4">Investigation Process</h4>
+              <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                  <div class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</div>
+                  <div>
+                    <h5 class="font-bold">Data Collection</h5>
+                    <p class="text-sm text-muted">Flight data recorders, cockpit voice recorders, wreckage analysis</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</div>
+                  <div>
+                    <h5 class="font-bold">Analysis</h5>
+                    <p class="text-sm text-muted">Technical evaluation, human factors assessment, operational review</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3</div>
+                  <div>
+                    <h5 class="font-bold">Recommendations</h5>
+                    <p class="text-sm text-muted">Safety enhancements for aircraft design, procedures, and training</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-4">Historical Impact Examples</h4>
+              <div class="space-y-4">
+                <div class="border-l-4 border-blue-400 pl-4">
+                  <h5 class="font-bold">Tenerife Disaster (1977)</h5>
+                  <p class="text-sm text-muted">Led to standardized ATC phraseology and Cockpit Resource Management</p>
+                </div>
+                <div class="border-l-4 border-green-400 pl-4">
+                  <h5 class="font-bold">British Airtours (1985)</h5>
+                  <p class="text-sm text-muted">Resulted in fire-retardant cabin materials and improved evacuation procedures</p>
+                </div>
+                <div class="border-l-4 border-purple-400 pl-4">
+                  <h5 class="font-bold">Air France 447 (2009)</h5>
+                  <p class="text-sm text-muted">Improved flight data recorders and pilot training for high-altitude stalls</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Industry Initiatives -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Industry-Wide Safety Initiatives</h3>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/www.boeing.com/e3206335e3109d2b08056ab6d1c85de8544d12a0.jpeg" alt="Aviation safety management team meeting" class="w-full h-48 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="aviation safety meeting" referrerpolicy="no-referrer" data-modified="1" data-score="11590.00"/>
+              <h4 class="font-bold text-primary mb-3">Global Standards Organizations</h4>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                  <i class="fas fa-globe text-blue-500"></i>
+                  <div>
+                    <h5 class="font-bold">ICAO</h5>
+                    <p class="text-sm text-muted">International Civil Aviation Organization</p>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <i class="fas fa-plane text-green-500"></i>
+                  <div>
+                    <h5 class="font-bold">IATA</h5>
+                    <p class="text-sm text-muted">International Air Transport Association</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-3">Key Programs</h4>
+              <div class="space-y-4">
+                <div class="bg-surface border border-gray-200 rounded-lg p-4">
+                  <h5 class="font-bold text-secondary mb-2">IOSA Program</h5>
+                  <p class="text-sm text-muted">IATA Operational Safety Audit - internationally recognized evaluation system</p>
+                </div>
+                <div class="bg-surface border border-gray-200 rounded-lg p-4">
+                  <h5 class="font-bold text-secondary mb-2">Flight Data Monitoring</h5>
+                  <p class="text-sm text-muted">Proactive risk identification through routine flight data analysis</p>
+                </div>
+                <div class="bg-surface border border-gray-200 rounded-lg p-4">
+                  <h5 class="font-bold text-secondary mb-2">Safety Management Systems</h5>
+                  <p class="text-sm text-muted">Systematic approach to managing safety risks at operator level</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technological Innovations -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Technological Innovations</h3>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-surface border border-gray-200 rounded-lg p-6">
+              <i class="fas fa-robot text-3xl text-accent mb-4"></i>
+              <h4 class="font-bold text-primary mb-3">AI and Machine Learning</h4>
+              <ul class="text-sm space-y-2 text-muted">
+                <li>• Predictive maintenance algorithms</li>
+                <li>• Flight deck decision support</li>
+                <li>• System failure prediction</li>
+                <li>• Flight path optimization</li>
+              </ul>
+            </div>
+            <div class="bg-surface border border-gray-200 rounded-lg p-6">
+              <i class="fas fa-eye text-3xl text-accent mb-4"></i>
+              <h4 class="font-bold text-primary mb-3">Advanced Sensors</h4>
+              <ul class="text-sm space-y-2 text-muted">
+                <li>• Enhanced vision systems (EVS)</li>
+                <li>• Synthetic vision systems (SVS)</li>
+                <li>• Data fusion capabilities</li>
+                <li>• Low-visibility operations support</li>
+              </ul>
+            </div>
+            <div class="bg-surface border border-gray-200 rounded-lg p-6">
+              <i class="fas fa-satellite-dish text-3xl text-accent mb-4"></i>
+              <h4 class="font-bold text-primary mb-3">Weather Detection</h4>
+              <ul class="text-sm space-y-2 text-muted">
+                <li>• LIDAR turbulence detection</li>
+                <li>• Clear-air turbulence mitigation</li>
+                <li>• Advanced weather forecasting</li>
+                <li>• Real-time weather avoidance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regulatory Changes -->
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Regulatory Changes and Policy Updates</h3>
+
+          <div class="space-y-6">
+            <div class="bg-surface border border-gray-200 rounded-lg p-6">
+              <h4 class="font-bold text-primary mb-4">Boeing 737 MAX Response</h4>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h5 class="font-bold text-secondary mb-2">Certification Changes</h5>
+                  <ul class="text-sm space-y-1 text-muted">
+                    <li>• More stringent oversight of aircraft design</li>
+                    <li>• Independent validation requirements</li>
+                    <li>• Human factors considerations</li>
+                    <li>• Pilot-automation interface standards</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="font-bold text-secondary mb-2">Training Mandates</h5>
+                  <ul class="text-sm space-y-1 text-muted">
+                    <li>• Enhanced simulator training requirements</li>
+                    <li>• Automated system failure scenarios</li>
+                    <li>• Manual flying skill maintenance</li>
+                    <li>• Recurrent training protocols</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface border border-gray-200 rounded-lg p-6">
+              <h4 class="font-bold text-primary mb-4">Other Significant Policy Updates</h4>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h5 class="font-bold text-secondary mb-2">Pilot Qualifications</h5>
+                  <p class="text-sm text-muted mb-2">
+                    Colgan Air Flight 3407 (2009) led to FAA mandating increased minimum flight hours from 250 to 1,500 and stricter rest requirements <a href="#ref-374" class="citation">[374]</a>.
+                  </p>
+                </div>
+                <div>
+                  <h5 class="font-bold text-secondary mb-2">Conflict Zone Management</h5>
+                  <p class="text-sm text-muted mb-2">
+                    MH17 and PS752 shootdowns prompted enhanced risk assessment for flights near conflict zones and better military-civilian coordination.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Future Outlook -->
+      <section id="future-outlook" class="py-16 px-8 max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h2 class="font-serif text-4xl font-bold text-primary mb-6">Aviation Safety Trends and Future Outlook</h2>
+          <div class="w-24 h-1 bg-accent mb-8"></div>
+        </div>
+
+        <!-- Statistical Analysis -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Statistical Analysis</h3>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 class="font-bold text-primary mb-4">Long-term Safety Improvements</h4>
+              <p class="text-muted mb-4">
+                The decade from 2015 to 2025 has generally seen a continued decline in commercial aviation accidents per million flights. The five-year average accident rate improved from approximately 1 per 456,000 flights a decade ago to 1 per 810,000 flights more recently <a href="#ref-233" class="citation">[233]</a>.
+              </p>
+              <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                <h5 class="font-bold text-green-700 mb-2">2023 Achievement</h5>
+                <p class="text-sm text-green-600">Noted as one of the safest years on record with no fatal commercial jetliner crashes</p>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-4">Recent Concerns</h4>
+              <p class="text-muted mb-4">
+                However, 2025 has seen a troubling spike in fatalities, with over 460 civil aviation fatalities reported globally by mid-year, significantly exceeding the decade-long average of 284. This represents a potential reversal of the positive trend <a href="#ref-2" class="citation">[2]</a>.
+              </p>
+              <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                <h5 class="font-bold text-red-700 mb-2">2025 Challenge</h5>
+                <p class="text-sm text-red-600">Year-to-date figures show 360 fatalities from 122 incidents by June 12, 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Safety Timeline Diagram -->
+          <div class="bg-surface border border-gray-200 rounded-lg p-6 mb-8">
+            <h4 class="font-bold text-primary mb-4">Aviation Safety Evolution Timeline</h4>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid" id="timeline-diagram">
+                timeline
+                title &#34;Aviation Safety Evolution (2015-2025)&#34;
+
+                2015 : &#34;Germanwings 9525&#34;
+                : &#34;Pilot mental health focus&#34;
+                : &#34;Cockpit security protocols&#34;
+
+                2018 : &#34;Lion Air 610&#34;
+                : &#34;First 737 MAX crash&#34;
+                : &#34;MCAS system flaws revealed&#34;
+
+                2019 : &#34;Ethiopian Airlines 302&#34;
+                : &#34;Second 737 MAX crash&#34;
+                : &#34;Global fleet grounding&#34;
+
+                2020 : &#34;Ukraine International 752&#34;
+                : &#34;Geopolitical risks highlighted&#34;
+                : &#34;Conflict zone management&#34;
+
+                2022 : &#34;China Eastern 5735&#34;
+                : &#34;Investigation transparency concerns&#34;
+                : &#34;Cockpit procedures review&#34;
+
+                2024 : &#34;Jeju Air 2216&#34;
+                : &#34;Bird strike vulnerabilities&#34;
+                : &#34;Hydraulic system failures&#34;
+
+                2025 : &#34;Air India 171&#34;
+                : &#34;Fuel system anomalies&#34;
+                : &#34;2025 safety challenges&#34;
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lessons Learned -->
+        <div class="mb-12">
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Continuous Improvement Culture</h3>
+
+          <div class="bg-surface border border-gray-200 rounded-lg p-6 mb-8">
+            <h4 class="font-bold text-primary mb-4">Key Lessons from Major Incidents</h4>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h5 class="font-bold text-secondary mb-3">Technical Systems</h5>
+                <ul class="space-y-2 text-sm text-muted">
+                  <li>• Redundancy in critical flight control systems</li>
+                  <li>• Pilot understanding of automated systems</li>
+                  <li>• Robust failure mitigation strategies</li>
+                  <li>• Comprehensive system documentation</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-bold text-secondary mb-3">Human Factors</h5>
+                <ul class="space-y-2 text-sm text-muted">
+                  <li>• Pilot mental health screening and support</li>
+                  <li>• Enhanced crew resource management</li>
+                  <li>• Threat and error management training</li>
+                  <li>• Open safety reporting culture</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pull-quote">
+            &#34;The aviation industry&#39;s commitment to learning from tragedies and implementing continuous improvements has created a resilient system where multiple layers of defense prevent errors from escalating into accidents.&#34;
+          </div>
+
+          <p class="text-muted mb-6">
+            This culture of continuous improvement is sustained through rigorous accident investigation processes, widespread adoption of Safety Management Systems (SMS), and proactive analysis of operational data. The industry&#39;s commitment to sharing safety information and best practices across airlines, manufacturers, and regulatory bodies creates a global safety net.
+          </p>
+        </div>
+
+        <!-- Future Challenges -->
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-secondary mb-6">Emerging Challenges and Future Priorities</h3>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/www.aerospacemanufacturinganddesign.com/faf469c00805c9734ed60fbbb7a264346ed7fa29.jpg" alt="Urban Air Mobility vehicle flying over cityscape" class="w-full h-48 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="urban air mobility vehicle flying over city" referrerpolicy="no-referrer" data-modified="1" data-score="11598.00"/>
+              <h4 class="font-bold text-primary mb-3">New Airspace Integration</h4>
+              <p class="text-muted mb-4">
+                The integration of Unmanned Aircraft Systems (UAS) and Urban Air Mobility (UAM) vehicles presents complex challenges for safe separation, diverse vehicle performance management, and automated traffic solutions.
+              </p>
+              <ul class="text-sm space-y-1 text-muted">
+                <li>• Detect-and-avoid technologies</li>
+                <li>• Automated traffic management</li>
+                <li>• Clear rules of the air</li>
+                <li>• Regulatory framework development</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-primary mb-3">Climate Change Impact</h4>
+              <p class="text-muted mb-4">
+                Climate change is expected to increase the frequency and intensity of severe weather events, requiring improved forecasting, resilient aircraft designs, and enhanced pilot training for extreme conditions.
+              </p>
+              <ul class="text-sm space-y-1 text-muted">
+                <li>• Increased turbulence events</li>
+                <li>• Thunderstorm intensity</li>
+                <li>• High wind conditions</li>
+                <li>• Weather forecasting improvements</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-surface border border-gray-200 rounded-lg p-6">
+              <h4 class="font-bold text-primary mb-4">Cybersecurity Priorities</h4>
+              <p class="text-muted mb-4">
+                As aircraft and ATC systems become increasingly digital and interconnected, cybersecurity vulnerabilities require continuous investment in security measures, threat detection, and incident response capabilities.
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-shield-alt text-accent"></i>
+                  <span class="text-sm">System resilience against cyber threats</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-eye text-accent"></i>
+                  <span class="text-sm">Continuous threat detection</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-bolt text-accent"></i>
+                  <span class="text-sm">Rapid incident response</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-surface border border-gray-200 rounded-lg p-6">
+              <h4 class="font-bold text-primary mb-4">Sustainability Initiatives</h4>
+              <p class="text-muted mb-4">
+                Development of Sustainable Aviation Fuels (SAFs) and new propulsion technologies will introduce new safety considerations that need proactive addressing.
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-leaf text-green-500"></i>
+                  <span class="text-sm">Sustainable Aviation Fuels</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-battery-full text-green-500"></i>
+                  <span class="text-sm">Electric propulsion systems</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-tint text-green-500"></i>
+                  <span class="text-sm">Hydrogen-powered aircraft</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h4 class="font-bold text-blue-700 mb-3">Workforce Development</h4>
+            <p class="text-blue-600 mb-4">
+              Maintaining a skilled and proficient workforce, including pilots, air traffic controllers, and maintenance personnel, will be crucial for addressing technological advancements and evolving operational demands.
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="text-center">
+                <i class="fas fa-user-graduate text-2xl text-blue-500 mb-2"></i>
+                <p class="text-sm font-bold">Continuous Training</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-tools text-2xl text-blue-500 mb-2"></i>
+                <p class="text-sm font-bold">Skill Gap Addressing</p>
+              </div>
+              <div class="text-center">
+                <i class="fas fa-users text-2xl text-blue-500 mb-2"></i>
+                <p class="text-sm font-bold">Safety Culture</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References Section -->
+      <section class="py-16 px-8 max-w-6xl mx-auto bg-gray-50">
+        <h2 class="font-serif text-3xl font-bold text-primary mb-8">References</h2>
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+          <div id="ref-2" class="mb-2">[2] <a href="https://www.hindustantimes.com/world-news/us-news/air-india-crash-pushes-2025-toward-aviation-s-deadliest-year-in-past-10-years-101749746932197.html" class="citation">Hindustan Times - 2025 Aviation Safety</a>
+          </div>
+          <div id="ref-23" class="mb-2">[23] <a href="https://www.iata.org/contentassets/95e933e1ad794068812f073cf883cb08/recommendations-for-accident-prevention-2024_final.pdf" class="citation">IATA - Recommendations for Accident Prevention</a>
+          </div>
+          <div id="ref-69" class="mb-2">[69] <a href="https://edition.cnn.com/2025/07/11/india/air-india-crash-report-intl-latam" class="citation">CNN - Air India Crash Report</a>
+          </div>
+          <div id="ref-71" class="mb-2">[71] <a href="https://en.wikipedia.org/wiki/Air_India_Flight_171" class="citation">Wikipedia - Air India Flight 171</a>
+          </div>
+          <div id="ref-117" class="mb-2">[117] <a href="https://www.aa.com.tr/en/world/factbox-deadliest-air-crashes-around-globe-since-2020/3595517" class="citation">AA.com.tr - Deadliest Air Crashes</a>
+          </div>
+          <div id="ref-123" class="mb-2">[123] <a href="https://www.arnolditkin.com/blog/injury/78-lives-lost-examining-the-surge-in-2025-plane-/" class="citation">Arnold &amp; Itkin - PSA Airlines Crash</a>
+          </div>
+          <div id="ref-131" class="mb-2">[131] <a href="https://www.aviationtoday.com/2019/10/28/lion-air-737-max-final-accident-report-cites-aoa-sensor-mcas-as-contributing-factors/" class="citation">Aviation Today - Lion Air Report</a>
+          </div>
+          <div id="ref-146" class="mb-2">[146] <a href="https://www.pbs.org/newshour/world/inadequate-training-contributed-to-boeing-crash-in-indonesia-report-finds" class="citation">PBS - Inadequate Training Findings</a>
+          </div>
+          <div id="ref-192" class="mb-2">[192] <a href="https://people.com/cause-of-air-india-plane-crash-revealed-in-preliminary-report-11754455" class="citation">People - Air India Crash Preliminary Report</a>
+          </div>
+          <div id="ref-227" class="mb-2">[227] <a href="https://beinsure.com/aircraft-crashes/" class="citation">Beinsure - Aircraft Crashes</a>
+          </div>
+          <div id="ref-233" class="mb-2">[233] <a href="https://powerdrill.ai/blog/global-commercial-aviation-accident-trends-(2015-2025)-and-extreme-weather-impacts" class="citation">Powerdrill - Aviation Accident Trends</a>
+          </div>
+          <div id="ref-290" class="mb-2">[290] <a href="https://www.straitstimes.com/asia/east-asia/three-years-after-china-eastern-plane-crash-regulator-has-not-released-report" class="citation">Straits Times - China Eastern Investigation</a>
+          </div>
+          <div id="ref-374" class="mb-2">[374] <a href="https://www.cnbc.com/2019/02/13/colgan-air-crash-10-years-ago-reshaped-us-aviation-safety.html" class="citation">CNBC - Colgan Air Crash Impact</a>
+          </div>
+          <div id="ref-386" class="mb-2">[386] <a href="https://www.mirror.co.uk/news/world-news/pilot-error-played-part-majority-34773943" class="citation">Mirror - Pilot Error Statistics</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Initialize Mermaid with enhanced styling
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                // Primary colors with high contrast
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1a1a1a',
+                primaryBorderColor: '#8b5a2b',
+                
+                // Secondary colors
+                secondaryColor: '#fafafa',
+                secondaryTextColor: '#1a1a1a',
+                secondaryBorderColor: '#8b5a2b',
+                
+                // Tertiary colors
+                tertiaryColor: '#ffffff',
+                tertiaryTextColor: '#1a1a1a',
+                tertiaryBorderColor: '#8b5a2b',
+                
+                // Background and text
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#fafafa',
+                tertiaryBkg: '#ffffff',
+                
+                // Line and edge colors
+                lineColor: '#8b5a2b',
+                edgeLabelBackground: '#ffffff',
+                
+                // Text styling
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px',
+                fontWeight: '600',
+                
+                // Specific node colors for better contrast
+                cScale0: '#d4af37',
+                cScale1: '#8b5a2b',
+                cScale2: '#d4af37',
+                
+                // Task colors for timeline
+                taskBkgColor: '#ffffff',
+                taskTextColor: '#1a1a1a',
+                taskTextLightColor: '#1a1a1a',
+                taskTextOutsideColor: '#1a1a1a',
+                taskTextClickableColor: '#1a1a1a',
+                
+                // Grid and axis
+                gridColor: '#e5e7eb',
+                axisTextColor: '#1a1a1a'
+            },
+            timeline: {
+                numberSectionStyles: 3,
+                disableMulticolor: false
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize controls after mermaid renders
+        setTimeout(initializeMermaidControls, 1000);
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile TOC
+                    if (window.innerWidth <= 1024) {
+                        document.getElementById('toc').classList.remove('open');
+                    }
+                }
+            });
+        });
+
+        // Active TOC link highlighting
+        function updateActiveTOCLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    currentSection = section.id;
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Mobile TOC toggle
+        function toggleTOC() {
+            const toc = document.getElementById('toc');
+            toc.classList.toggle('open');
+        }
+
+        // Close mobile TOC when clicking outside
+        document.addEventListener('click', function(e) {
+            const toc = document.getElementById('toc');
+            const toggleButton = document.querySelector('button[onclick="toggleTOC()"]');
+            
+            if (window.innerWidth <= 1024 && 
+                !toc.contains(e.target) && 
+                !toggleButton.contains(e.target)) {
+                toc.classList.remove('open');
+            }
+        });
+
+        // Update active TOC link on scroll
+        window.addEventListener('scroll', updateActiveTOCLink);
+        
+        // Initial call
+        updateActiveTOCLink();
+    </script>
+  
+
+</body></html>
